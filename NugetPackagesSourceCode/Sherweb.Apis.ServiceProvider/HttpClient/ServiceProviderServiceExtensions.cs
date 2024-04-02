@@ -16,6 +16,143 @@ namespace Sherweb.Apis.ServiceProvider
     public static partial class ServiceProviderServiceExtensions
     {
             /// <summary>
+            /// GetCustomerCatalogItemsPricingInformation (beta)
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static CustomerCatalogItemsPricingInformationDto GetCustomerCatalogItemsPricingInformation(this IServiceProviderService operations, System.Guid customerId, GetCustomerCatalogItemsPricingInformationRequest body = default(GetCustomerCatalogItemsPricingInformationRequest), string acceptLanguage = default(string))
+            {
+                return operations.GetCustomerCatalogItemsPricingInformationAsync(customerId, body, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetCustomerCatalogItemsPricingInformation (beta)
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CustomerCatalogItemsPricingInformationDto> GetCustomerCatalogItemsPricingInformationAsync(this IServiceProviderService operations, System.Guid customerId, GetCustomerCatalogItemsPricingInformationRequest body = default(GetCustomerCatalogItemsPricingInformationRequest), string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCustomerCatalogItemsPricingInformationWithHttpMessagesAsync(customerId, body, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// GetCustomerPlatformsConfigurations (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all configured platforms for a customer.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static CustomerConfiguredPlatforms GetCustomerPlatformsConfigurations(this IServiceProviderService operations, System.Guid customerId, string acceptLanguage = default(string))
+            {
+                return operations.GetCustomerPlatformsConfigurationsAsync(customerId, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetCustomerPlatformsConfigurations (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all configured platforms for a customer.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CustomerConfiguredPlatforms> GetCustomerPlatformsConfigurationsAsync(this IServiceProviderService operations, System.Guid customerId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCustomerPlatformsConfigurationsWithHttpMessagesAsync(customerId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// ConfigurePlatforms (beta)
+            /// </summary>
+            /// <remarks>
+            /// Configure platforms required parameters.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static void ConfigurePlatforms(this IServiceProviderService operations, System.Guid customerId, ConfigurePlatformsRequest body = default(ConfigurePlatformsRequest), string acceptLanguage = default(string))
+            {
+                operations.ConfigurePlatformsAsync(customerId, body, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// ConfigurePlatforms (beta)
+            /// </summary>
+            /// <remarks>
+            /// Configure platforms required parameters.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ConfigurePlatformsAsync(this IServiceProviderService operations, System.Guid customerId, ConfigurePlatformsRequest body = default(ConfigurePlatformsRequest), string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ConfigurePlatformsWithHttpMessagesAsync(customerId, body, acceptLanguage, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// GetCustomers (beta)
             /// </summary>
             /// <remarks>
@@ -52,6 +189,156 @@ namespace Sherweb.Apis.ServiceProvider
             public static async Task<Customers> GetCustomersAsync(this IServiceProviderService operations, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetCustomersWithHttpMessagesAsync(acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// GetAllPlatforms (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all available platforms.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static PlatformsCollection GetAllPlatforms(this IServiceProviderService operations, string acceptLanguage = default(string))
+            {
+                return operations.GetAllPlatformsAsync(acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetAllPlatforms (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all available platforms.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PlatformsCollection> GetAllPlatformsAsync(this IServiceProviderService operations, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAllPlatformsWithHttpMessagesAsync(acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// GetPlatformsForSkus (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all platforms associated to the provided Skus.
+            /// Specifying multiple language tags in Accept-Language header will generate
+            /// translations for each of them.
+            /// CultureInfo.InvariantCulture ("iv") is used as a fallback when language
+            /// tags were not provided or not supported.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static PlatformsForSkusCollection GetPlatformsForSkus(this IServiceProviderService operations, GetPlatformsForSkusRequest body = default(GetPlatformsForSkusRequest), string acceptLanguage = default(string))
+            {
+                return operations.GetPlatformsForSkusAsync(body, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetPlatformsForSkus (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of all platforms associated to the provided Skus.
+            /// Specifying multiple language tags in Accept-Language header will generate
+            /// translations for each of them.
+            /// CultureInfo.InvariantCulture ("iv") is used as a fallback when language
+            /// tags were not provided or not supported.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PlatformsForSkusCollection> GetPlatformsForSkusAsync(this IServiceProviderService operations, GetPlatformsForSkusRequest body = default(GetPlatformsForSkusRequest), string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetPlatformsForSkusWithHttpMessagesAsync(body, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// GetPlatformRequiredParameters (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of required parameters for selected platforms.
+            /// Specifying multiple language tags in Accept-Language header will generate
+            /// translations for each of them.
+            /// CultureInfo.InvariantCulture ("iv") is used as a fallback when language
+            /// tags were not provided or not supported.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static PlatformRequiredParametersCollection GetPlatformRequiredParameters(this IServiceProviderService operations, GetPlatformRequiredParametersRequest body = default(GetPlatformRequiredParametersRequest), string acceptLanguage = default(string))
+            {
+                return operations.GetPlatformRequiredParametersAsync(body, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetPlatformRequiredParameters (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the list of required parameters for selected platforms.
+            /// Specifying multiple language tags in Accept-Language header will generate
+            /// translations for each of them.
+            /// CultureInfo.InvariantCulture ("iv") is used as a fallback when language
+            /// tags were not provided or not supported.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PlatformRequiredParametersCollection> GetPlatformRequiredParametersAsync(this IServiceProviderService operations, GetPlatformRequiredParametersRequest body = default(GetPlatformRequiredParametersRequest), string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetPlatformRequiredParametersWithHttpMessagesAsync(body, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

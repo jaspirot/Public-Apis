@@ -41,6 +41,67 @@ namespace Sherweb.Apis.ServiceProvider
 
 
         /// <summary>
+        /// GetCustomerCatalogItemsPricingInformation (beta)
+        /// </summary>
+        /// <param name='customerId'>
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<CustomerCatalogItemsPricingInformationDto>> GetCustomerCatalogItemsPricingInformationWithHttpMessagesAsync(System.Guid customerId, GetCustomerCatalogItemsPricingInformationRequest body = default(GetCustomerCatalogItemsPricingInformationRequest), string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// GetCustomerPlatformsConfigurations (beta)
+        /// </summary>
+        /// <remarks>
+        /// Get the list of all configured platforms for a customer.
+        /// </remarks>
+        /// <param name='customerId'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<CustomerConfiguredPlatforms>> GetCustomerPlatformsConfigurationsWithHttpMessagesAsync(System.Guid customerId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// ConfigurePlatforms (beta)
+        /// </summary>
+        /// <remarks>
+        /// Configure platforms required parameters.
+        /// </remarks>
+        /// <param name='customerId'>
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse> ConfigurePlatformsWithHttpMessagesAsync(System.Guid customerId, ConfigurePlatformsRequest body = default(ConfigurePlatformsRequest), string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// GetCustomers (beta)
         /// </summary>
         /// <remarks>
@@ -57,6 +118,72 @@ namespace Sherweb.Apis.ServiceProvider
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<Customers>> GetCustomersWithHttpMessagesAsync(string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// GetAllPlatforms (beta)
+        /// </summary>
+        /// <remarks>
+        /// Get the list of all available platforms.
+        /// </remarks>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<PlatformsCollection>> GetAllPlatformsWithHttpMessagesAsync(string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// GetPlatformsForSkus (beta)
+        /// </summary>
+        /// <remarks>
+        /// Get the list of all platforms associated to the provided Skus.
+        /// Specifying multiple language tags in Accept-Language header will
+        /// generate translations for each of them.
+        /// CultureInfo.InvariantCulture ("iv") is used as a fallback when
+        /// language tags were not provided or not supported.
+        /// </remarks>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<PlatformsForSkusCollection>> GetPlatformsForSkusWithHttpMessagesAsync(GetPlatformsForSkusRequest body = default(GetPlatformsForSkusRequest), string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// GetPlatformRequiredParameters (beta)
+        /// </summary>
+        /// <remarks>
+        /// Get the list of required parameters for selected platforms.
+        /// Specifying multiple language tags in Accept-Language header will
+        /// generate translations for each of them.
+        /// CultureInfo.InvariantCulture ("iv") is used as a fallback when
+        /// language tags were not provided or not supported.
+        /// </remarks>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<PlatformRequiredParametersCollection>> GetPlatformRequiredParametersWithHttpMessagesAsync(GetPlatformRequiredParametersRequest body = default(GetPlatformRequiredParametersRequest), string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// GetReceivableCharges (beta)
