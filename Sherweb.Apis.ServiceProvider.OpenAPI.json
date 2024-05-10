@@ -5,6 +5,46 @@
     "version": "1"
   },
   "paths": {
+    "/customer-catalogs/{customerId}": {
+      "get": {
+        "tags": [
+          "CustomerCatalogs"
+        ],
+        "summary": "GetCustomerCatalog (beta)",
+        "operationId": "GetCustomerCatalog",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specify language (and culture) following [RFC 7231, section 5.3.5: Accept-Language].",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerCatalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/customer-catalogs/{customerId}/catalog-items-pricing": {
       "post": {
         "tags": [
@@ -34,16 +74,6 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetCustomerCatalogItemsPricingInformationRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetCustomerCatalogItemsPricingInformationRequest"
-              }
-            },
-            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/GetCustomerCatalogItemsPricingInformationRequest"
               }
@@ -234,16 +264,6 @@
               "schema": {
                 "$ref": "#/components/schemas/GetPlatformsForSkusRequest"
               }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetPlatformsForSkusRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetPlatformsForSkusRequest"
-              }
             }
           }
         },
@@ -285,16 +305,6 @@
               "schema": {
                 "$ref": "#/components/schemas/GetPlatformRequiredParametersRequest"
               }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetPlatformRequiredParametersRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetPlatformRequiredParametersRequest"
-              }
             }
           }
         },
@@ -318,7 +328,7 @@
           "ReceivableCharges"
         ],
         "summary": "GetReceivableCharges (beta)",
-        "description": "Get the amounts that one of your customers owe you for a specific billing period. There are three types of charges that are included in the data returned: recurring, usage, and setup.\r\n<div style=\"color:#FF9B00;background-color:#FCF8E3;padding:1rem;border-radius:5px;border:1px solid #FF9B00;display:inline-block\"><svg width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\" /></svg> For the time being, you cannot use the Service Provider API rebilling feature (<i>GetReceivableCharges</i> endpoint) while having a PSA integration enabled.</div>",
+        "description": "Get the amounts that one of your customers owe you for a specific billing period. There are three types of charges that are included in the data returned: recurring, usage, and setup.\r\n<div style=\"color:#FF9B00;background-color:#FCF8E3;padding:1rem;border-radius:5px;border:1px solid #FF9B00;display:inline-block\"><svg width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\" /></svg>\r\n    For the time being, you cannot use the Service Provider API rebilling feature (<i>GetReceivableCharges</i> endpoint) while having a PSA integration enabled.\r\n</div>",
         "operationId": "GetReceivableCharges",
         "parameters": [
           {
@@ -453,6 +463,61 @@
         }
       }
     },
+    "/billing/subscriptions/cancellations": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "CancelSubscriptions (beta)",
+        "description": "Cancel subscriptions for one of your customers.",
+        "operationId": "CancelSubscriptions",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specify language (and culture) following [RFC 7231, section 5.3.5: Accept-Language].",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionsCancellationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
     "/billing/subscriptions/amendments/{subscriptionsAmendmentId}/status": {
       "get": {
         "tags": [
@@ -493,32 +558,102 @@
           }
         }
       }
+    },
+    "/billing/subscriptions/cancellations/{subscriptionsCancellationId}/status": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "GetSubscriptionsCancellationStatus (beta)",
+        "description": "Get the status of a subscriptions cancellation.",
+        "operationId": "GetSubscriptionsCancellationStatus",
+        "parameters": [
+          {
+            "name": "subscriptionsCancellationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specify language (and culture) following [RFC 7231, section 5.3.5: Accept-Language].",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionsCancellationStatus"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "BillingCycleType": {
-        "enum": [
-          "Daily",
-          "Weekly",
-          "Monthly",
-          "Yearly"
+      "CatalogItem": {
+        "required": [
+          "billingCycle",
+          "commitmentTerm",
+          "description",
+          "name",
+          "sku",
+          "vendor"
         ],
-        "type": "string",
-        "description": "Represents the billing cycle types for a subscription or contract."
+        "type": "object",
+        "properties": {
+          "sku": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Translation"
+            }
+          },
+          "description": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Translation"
+            }
+          },
+          "vendor": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "billingCycle": {
+            "minLength": 1,
+            "type": "string",
+            "description": "A billing cycle, also referred to as a billing period, is the interval of time between billing statements.\r\nAlthough billing cycles are most often set at one month, or one year, they may vary in length depending on the SKU.\r\nPossible values: monthly, yearly, once"
+          },
+          "commitmentTerm": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The duration for which the catalog item must be kept and paid for once purchased.\r\nAn open commitment term means it is not tied to a commitment period.\r\nPossible values: monthly, yearly, biennial, triennial, open"
+          }
+        },
+        "additionalProperties": false
       },
       "CatalogItemPricingInformationDto": {
         "required": [
-          "catalogItemId",
           "pricingInformation",
           "sku"
         ],
         "type": "object",
         "properties": {
-          "catalogItemId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "sku": {
             "minLength": 1,
             "type": "string"
@@ -744,6 +879,26 @@
             "format": "date-time",
             "nullable": true,
             "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerCatalog": {
+        "required": [
+          "customerId"
+        ],
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "catalogItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogItem"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1010,6 +1165,7 @@
       },
       "PricingInformationDto": {
         "required": [
+          "billingCycle",
           "currency",
           "recurringFee",
           "setupFee"
@@ -1030,10 +1186,9 @@
             "$ref": "#/components/schemas/Currency"
           },
           "billingCycle": {
-            "$ref": "#/components/schemas/BillingCycleType"
-          },
-          "commitmentTerm": {
-            "$ref": "#/components/schemas/CommitmentTermType"
+            "minLength": 1,
+            "type": "string",
+            "description": "A billing cycle, also referred to as a billing period, is the interval of time between billing statements.\r\nAlthough billing cycles are most often set at one month, or one year, they may vary in length depending on the SKU.\r\nPossible values: monthly, yearly, once"
           }
         },
         "additionalProperties": false
@@ -1284,6 +1439,33 @@
         "description": "Subscription ID to amend, paired with its new intended quantity."
       },
       "SubscriptionsAmendmentStatus": {
+        "enum": [
+          "Pending",
+          "Processing",
+          "Success",
+          "Failure",
+          "Canceled",
+          "PartialSuccess"
+        ],
+        "type": "string"
+      },
+      "SubscriptionsCancellationRequest": {
+        "required": [
+          "subscriptionIds"
+        ],
+        "type": "object",
+        "properties": {
+          "subscriptionIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionsCancellationStatus": {
         "enum": [
           "Pending",
           "Processing",

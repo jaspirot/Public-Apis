@@ -41,6 +41,23 @@ namespace Sherweb.Apis.ServiceProvider
 
 
         /// <summary>
+        /// GetCustomerCatalog (beta)
+        /// </summary>
+        /// <param name='customerId'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<CustomerCatalog>> GetCustomerCatalogWithHttpMessagesAsync(System.Guid customerId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// GetCustomerCatalogItemsPricingInformation (beta)
         /// </summary>
         /// <param name='customerId'>
@@ -200,10 +217,11 @@ namespace Sherweb.Apis.ServiceProvider
         /// 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8
         /// 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1
         /// 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-        /// /&gt;&lt;/svg&gt; For the time being, you cannot use the Service
-        /// Provider API rebilling feature
-        /// (&lt;i&gt;GetReceivableCharges&lt;/i&gt; endpoint) while having a
-        /// PSA integration enabled.&lt;/div&gt;
+        /// /&gt;&lt;/svg&gt;
+        /// For the time being, you cannot use the Service Provider API
+        /// rebilling feature (&lt;i&gt;GetReceivableCharges&lt;/i&gt;
+        /// endpoint) while having a PSA integration enabled.
+        /// &lt;/div&gt;
         /// </remarks>
         /// <param name='customerId'>
         /// </param>
@@ -268,6 +286,28 @@ namespace Sherweb.Apis.ServiceProvider
         Task<HttpOperationResponse<SubscriptionsAmendment>> CreateSubscriptionsAmendmentWithHttpMessagesAsync(System.Guid customerId, CreateSubscriptionsAmendmentParameters body = default(CreateSubscriptionsAmendmentParameters), string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// CancelSubscriptions (beta)
+        /// </summary>
+        /// <remarks>
+        /// Cancel subscriptions for one of your customers.
+        /// </remarks>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='customerId'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<System.Guid?>> CancelSubscriptionsWithHttpMessagesAsync(SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// GetSubscriptionsAmendmentStatus (beta)
         /// </summary>
         /// <remarks>
@@ -286,6 +326,26 @@ namespace Sherweb.Apis.ServiceProvider
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<string>> GetSubscriptionsAmendmentStatusWithHttpMessagesAsync(System.Guid subscriptionsAmendmentId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// GetSubscriptionsCancellationStatus (beta)
+        /// </summary>
+        /// <remarks>
+        /// Get the status of a subscriptions cancellation.
+        /// </remarks>
+        /// <param name='subscriptionsCancellationId'>
+        /// </param>
+        /// <param name='acceptLanguage'>
+        /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+        /// Accept-Language].
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<string>> GetSubscriptionsCancellationStatusWithHttpMessagesAsync(System.Guid subscriptionsCancellationId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
