@@ -583,7 +583,7 @@ namespace Sherweb.Apis.ServiceProvider
             /// Specify language (and culture) following [RFC 7231, section 5.3.5:
             /// Accept-Language].
             /// </param>
-            public static System.Guid? CancelSubscriptions(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string))
+            public static SubscriptionsCancellation CancelSubscriptions(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string))
             {
                 return operations.CancelSubscriptionsAsync(body, customerId, acceptLanguage).GetAwaiter().GetResult();
             }
@@ -608,7 +608,7 @@ namespace Sherweb.Apis.ServiceProvider
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<System.Guid?> CancelSubscriptionsAsync(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SubscriptionsCancellation> CancelSubscriptionsAsync(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CancelSubscriptionsWithHttpMessagesAsync(body, customerId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
                 {

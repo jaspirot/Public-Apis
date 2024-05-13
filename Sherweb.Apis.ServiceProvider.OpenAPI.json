@@ -506,8 +506,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/SubscriptionsCancellation"
                 }
               }
             }
@@ -1410,6 +1409,9 @@
         "additionalProperties": false
       },
       "SubscriptionsAmendment": {
+        "required": [
+          "subscriptionsAmendmentId"
+        ],
         "type": "object",
         "properties": {
           "subscriptionsAmendmentId": {
@@ -1448,6 +1450,19 @@
           "PartialSuccess"
         ],
         "type": "string"
+      },
+      "SubscriptionsCancellation": {
+        "required": [
+          "subscriptionsCancellationId"
+        ],
+        "type": "object",
+        "properties": {
+          "subscriptionsCancellationId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
       },
       "SubscriptionsCancellationRequest": {
         "required": [

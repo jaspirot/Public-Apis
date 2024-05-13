@@ -2015,7 +2015,7 @@ namespace Sherweb.Apis.ServiceProvider
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<System.Guid?>> CancelSubscriptionsWithHttpMessagesAsync(SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<SubscriptionsCancellation>> CancelSubscriptionsWithHttpMessagesAsync(SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -2126,7 +2126,7 @@ namespace Sherweb.Apis.ServiceProvider
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<System.Guid?>();
+            var _result = new HttpOperationResponse<SubscriptionsCancellation>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -2135,7 +2135,7 @@ namespace Sherweb.Apis.ServiceProvider
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<System.Guid?>(_responseContent, DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<SubscriptionsCancellation>(_responseContent, DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
