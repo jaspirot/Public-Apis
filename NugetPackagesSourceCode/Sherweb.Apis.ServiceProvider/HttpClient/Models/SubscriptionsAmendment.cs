@@ -22,7 +22,7 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// <summary>
         /// Initializes a new instance of the SubscriptionsAmendment class.
         /// </summary>
-        public SubscriptionsAmendment(System.Guid? subscriptionsAmendmentId = default(System.Guid?))
+        public SubscriptionsAmendment(System.Guid subscriptionsAmendmentId)
         {
             SubscriptionsAmendmentId = subscriptionsAmendmentId;
             CustomInit();
@@ -36,7 +36,17 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "subscriptionsAmendmentId")]
-        public System.Guid? SubscriptionsAmendmentId { get; set; }
+        public System.Guid SubscriptionsAmendmentId { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            //Nothing to validate
+        }
     }
 }

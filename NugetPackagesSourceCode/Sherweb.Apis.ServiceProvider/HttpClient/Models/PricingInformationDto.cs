@@ -29,17 +29,17 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// first cycle</param>
         /// <param name="currency">Possible values include: 'Undefined', 'Cad',
         /// 'Usd', 'Eur', 'Gbp'</param>
-        /// <param name="billingCycle">Possible values include: 'Daily',
-        /// 'Weekly', 'Monthly', 'Yearly'</param>
-        /// <param name="commitmentTerm">Possible values include: 'Monthly',
-        /// 'Annual', 'Biennial', 'Triennial'</param>
-        public PricingInformationDto(double recurringFee, double setupFee, string currency, string billingCycle = default(string), string commitmentTerm = default(string))
+        /// <param name="billingCycle">A billing cycle, also referred to as a
+        /// billing period, is the interval of time between billing statements.
+        /// Although billing cycles are most often set at one month, or one
+        /// year, they may vary in length depending on the SKU.
+        /// Possible values: monthly, yearly, once</param>
+        public PricingInformationDto(double recurringFee, double setupFee, string currency, string billingCycle)
         {
             RecurringFee = recurringFee;
             SetupFee = setupFee;
             Currency = currency;
             BillingCycle = billingCycle;
-            CommitmentTerm = commitmentTerm;
             CustomInit();
         }
 
@@ -69,18 +69,14 @@ namespace Sherweb.Apis.ServiceProvider.Models
         public string Currency { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Daily', 'Weekly', 'Monthly',
-        /// 'Yearly'
+        /// Gets or sets a billing cycle, also referred to as a billing period,
+        /// is the interval of time between billing statements.
+        /// Although billing cycles are most often set at one month, or one
+        /// year, they may vary in length depending on the SKU.
+        /// Possible values: monthly, yearly, once
         /// </summary>
         [JsonProperty(PropertyName = "billingCycle")]
         public string BillingCycle { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'Monthly', 'Annual',
-        /// 'Biennial', 'Triennial'
-        /// </summary>
-        [JsonProperty(PropertyName = "commitmentTerm")]
-        public string CommitmentTerm { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -93,6 +89,10 @@ namespace Sherweb.Apis.ServiceProvider.Models
             if (Currency == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Currency");
+            }
+            if (BillingCycle == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "BillingCycle");
             }
         }
     }

@@ -25,9 +25,8 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// Initializes a new instance of the CatalogItemPricingInformationDto
         /// class.
         /// </summary>
-        public CatalogItemPricingInformationDto(System.Guid catalogItemId, string sku, PricingInformationDto pricingInformation)
+        public CatalogItemPricingInformationDto(string sku, PricingInformationDto pricingInformation)
         {
-            CatalogItemId = catalogItemId;
             Sku = sku;
             PricingInformation = pricingInformation;
             CustomInit();
@@ -37,11 +36,6 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "catalogItemId")]
-        public System.Guid CatalogItemId { get; set; }
 
         /// <summary>
         /// </summary>

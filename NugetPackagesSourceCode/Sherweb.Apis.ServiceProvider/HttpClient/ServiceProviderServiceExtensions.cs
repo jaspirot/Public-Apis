@@ -16,6 +16,46 @@ namespace Sherweb.Apis.ServiceProvider
     public static partial class ServiceProviderServiceExtensions
     {
             /// <summary>
+            /// GetCustomerCatalog (beta)
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static CustomerCatalog GetCustomerCatalog(this IServiceProviderService operations, System.Guid customerId, string acceptLanguage = default(string))
+            {
+                return operations.GetCustomerCatalogAsync(customerId, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetCustomerCatalog (beta)
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CustomerCatalog> GetCustomerCatalogAsync(this IServiceProviderService operations, System.Guid customerId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCustomerCatalogWithHttpMessagesAsync(customerId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// GetCustomerCatalogItemsPricingInformation (beta)
             /// </summary>
             /// <param name='operations'>
@@ -358,10 +398,11 @@ namespace Sherweb.Apis.ServiceProvider
             /// 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0
             /// 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35
             /// 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0
-            /// 2 1 1 0 0 1 0-2z" /&gt;&lt;/svg&gt; For the time being, you cannot use the
-            /// Service Provider API rebilling feature
-            /// (&lt;i&gt;GetReceivableCharges&lt;/i&gt; endpoint) while having a PSA
-            /// integration enabled.&lt;/div&gt;
+            /// 2 1 1 0 0 1 0-2z" /&gt;&lt;/svg&gt;
+            /// For the time being, you cannot use the Service Provider API rebilling
+            /// feature (&lt;i&gt;GetReceivableCharges&lt;/i&gt; endpoint) while having a
+            /// PSA integration enabled.
+            /// &lt;/div&gt;
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -397,10 +438,11 @@ namespace Sherweb.Apis.ServiceProvider
             /// 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0
             /// 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35
             /// 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0
-            /// 2 1 1 0 0 1 0-2z" /&gt;&lt;/svg&gt; For the time being, you cannot use the
-            /// Service Provider API rebilling feature
-            /// (&lt;i&gt;GetReceivableCharges&lt;/i&gt; endpoint) while having a PSA
-            /// integration enabled.&lt;/div&gt;
+            /// 2 1 1 0 0 1 0-2z" /&gt;&lt;/svg&gt;
+            /// For the time being, you cannot use the Service Provider API rebilling
+            /// feature (&lt;i&gt;GetReceivableCharges&lt;/i&gt; endpoint) while having a
+            /// PSA integration enabled.
+            /// &lt;/div&gt;
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -525,6 +567,56 @@ namespace Sherweb.Apis.ServiceProvider
             }
 
             /// <summary>
+            /// CancelSubscriptions (beta)
+            /// </summary>
+            /// <remarks>
+            /// Cancel subscriptions for one of your customers.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static SubscriptionsCancellation CancelSubscriptions(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string))
+            {
+                return operations.CancelSubscriptionsAsync(body, customerId, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// CancelSubscriptions (beta)
+            /// </summary>
+            /// <remarks>
+            /// Cancel subscriptions for one of your customers.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='customerId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SubscriptionsCancellation> CancelSubscriptionsAsync(this IServiceProviderService operations, SubscriptionsCancellationRequest body, System.Guid customerId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CancelSubscriptionsWithHttpMessagesAsync(body, customerId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// GetSubscriptionsAmendmentStatus (beta)
             /// </summary>
             /// <remarks>
@@ -565,6 +657,52 @@ namespace Sherweb.Apis.ServiceProvider
             public static async Task<string> GetSubscriptionsAmendmentStatusAsync(this IServiceProviderService operations, System.Guid subscriptionsAmendmentId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSubscriptionsAmendmentStatusWithHttpMessagesAsync(subscriptionsAmendmentId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// GetSubscriptionsCancellationStatus (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the status of a subscriptions cancellation.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionsCancellationId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            public static string GetSubscriptionsCancellationStatus(this IServiceProviderService operations, System.Guid subscriptionsCancellationId, string acceptLanguage = default(string))
+            {
+                return operations.GetSubscriptionsCancellationStatusAsync(subscriptionsCancellationId, acceptLanguage).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// GetSubscriptionsCancellationStatus (beta)
+            /// </summary>
+            /// <remarks>
+            /// Get the status of a subscriptions cancellation.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionsCancellationId'>
+            /// </param>
+            /// <param name='acceptLanguage'>
+            /// Specify language (and culture) following [RFC 7231, section 5.3.5:
+            /// Accept-Language].
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<string> GetSubscriptionsCancellationStatusAsync(this IServiceProviderService operations, System.Guid subscriptionsCancellationId, string acceptLanguage = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSubscriptionsCancellationStatusWithHttpMessagesAsync(subscriptionsCancellationId, acceptLanguage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
