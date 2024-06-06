@@ -6,6 +6,7 @@
 
 namespace Sherweb.Apis.ServiceProvider.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -22,9 +23,10 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// <summary>
         /// Initializes a new instance of the SubscriptionsAmendment class.
         /// </summary>
-        public SubscriptionsAmendment(System.Guid subscriptionsAmendmentId)
+        public SubscriptionsAmendment(System.Guid subscriptionsAmendmentId, TrackingId trackingId)
         {
             SubscriptionsAmendmentId = subscriptionsAmendmentId;
+            TrackingId = trackingId;
             CustomInit();
         }
 
@@ -39,14 +41,26 @@ namespace Sherweb.Apis.ServiceProvider.Models
         public System.Guid SubscriptionsAmendmentId { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "trackingId")]
+        public TrackingId TrackingId { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (TrackingId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "TrackingId");
+            }
+            if (TrackingId != null)
+            {
+                TrackingId.Validate();
+            }
         }
     }
 }
