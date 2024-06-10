@@ -10,23 +10,23 @@ namespace Sherweb.Apis.ServiceProvider.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class SubscriptionsCancellation
+    public partial class OrderItem
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsCancellation class.
+        /// Initializes a new instance of the OrderItem class.
         /// </summary>
-        public SubscriptionsCancellation()
+        public OrderItem()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsCancellation class.
+        /// Initializes a new instance of the OrderItem class.
         /// </summary>
-        public SubscriptionsCancellation(System.Guid subscriptionsCancellationId, TrackingId trackingId)
+        public OrderItem(string sku, int quantity)
         {
-            SubscriptionsCancellationId = subscriptionsCancellationId;
-            TrackingId = trackingId;
+            Sku = sku;
+            Quantity = quantity;
             CustomInit();
         }
 
@@ -37,13 +37,13 @@ namespace Sherweb.Apis.ServiceProvider.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "subscriptionsCancellationId")]
-        public System.Guid SubscriptionsCancellationId { get; set; }
+        [JsonProperty(PropertyName = "sku")]
+        public string Sku { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "trackingId")]
-        public TrackingId TrackingId { get; set; }
+        [JsonProperty(PropertyName = "quantity")]
+        public int Quantity { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -53,13 +53,9 @@ namespace Sherweb.Apis.ServiceProvider.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (TrackingId == null)
+            if (Sku == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TrackingId");
-            }
-            if (TrackingId != null)
-            {
-                TrackingId.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
             }
         }
     }
